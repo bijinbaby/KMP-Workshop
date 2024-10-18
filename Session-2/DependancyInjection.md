@@ -5,7 +5,7 @@
 #### Step 1.1 : Define Koin for shared-module 
 path : shared/src/commonMain/kotlin/com/trenser/newsapp/Platform.kt
 
-- Add the below code to the path
+- Add the below code to the file
 ```kotlin
 val sharedModule = module {
     // Provide Repository
