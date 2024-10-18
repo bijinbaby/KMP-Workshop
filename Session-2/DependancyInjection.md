@@ -5,7 +5,7 @@
 #### Step 1.1 : Define Koin for shared-module 
 path : shared/src/commonMain/kotlin/com/trenser/newsapp/Platform.kt
 
-- Add the below code to the file
+- Add the below code to the file at above path
 ```kotlin
 val sharedModule = module {
     // Provide Repository
@@ -23,7 +23,7 @@ val sharedModule = module {
 #### Step 1.2 : Define Koin module variable for platform-specific-modules
 path : shared/src/commonMain/kotlin/com/trenser/newsapp/Platform.kt
 
-- Add the below code to the path
+- Add the below code to the file at above path
 ```kotlin
 expect val platformSpecificSharedModule: Module
 ```
@@ -31,7 +31,7 @@ expect val platformSpecificSharedModule: Module
 #### Step 1.3 : Override the plaform-specific-module variable inside Android module
 path : shared/src/androidMain/kotlin/com/trenser/newsapp/Platform.android.kt
 
-- Add the below code to the path
+- Add the below code to the file at above path
 ```kotlin
 actual val platformSpecificSharedModule = module {
     single<BookmarkRepository> { BookmarkRepositoryImpl(
