@@ -52,12 +52,23 @@ actual val platformSpecificSharedModule = module {
 
 
 ### Step 2 : Start Koin DI
-#### Step 2.1 : Write a class inside iosMain to help start Koin for iOS inside path :
-shared/src/iosMain/kotlin/com/trenser/newsapp/data/local/db/di/KoinHelper.kt
+#### Step 2.1 : Create a class inside iosMain to help start Koin for iOS
 
-Why do we need this class?
-- Koin is a Kotlin library so we cannot use it directly inside iOS application
-- We will call KoinHelper.initKoin() inside the entry point of the swiftUI app
+##### Folder structure generation
+- Open the terminal inside android studio
+- Drag 'shared/src/iosMain/kotlin/com/trenser/newsapp/data' folder to the terminal
+- Execute the below code to create a new file named 'di'
+```kotlin
+mkdir di
+```
+
+touch "ViewModels.kt"
+
+path : shared/src/iosMain/kotlin/com/trenser/newsapp/data/local/db/di/KoinHelper.kt
+
+- Why do we need this class?
+    - Koin is a Kotlin library so we cannot use it directly inside iOS application
+    - We will call KoinHelper.initKoin() inside the entry point of the swiftUI app
 
 ```kotlin
 class KoinHelper : KoinComponent {
@@ -74,8 +85,8 @@ class KoinHelper : KoinComponent {
 }
 ```
 
-#### Step 2.2 : Write a class inside iosMain to use Koin inside iOS app inside path :
- shared/src/iosMain/kotlin/com/trenser/newsapp/data/local/db/di/ViemodelHelper.kt
+#### Step 2.2 : Create a class inside iosMain to use Koin inside iOS app
+path : shared/src/iosMain/kotlin/com/trenser/newsapp/data/local/db/di/ViemodelHelper.kt
 - We will write a class and some variables for injecting dependencies into iOS app
 ```kotlin
 sealed class ViemodelHelper:KoinComponent{
@@ -107,10 +118,13 @@ sealed class ViemodelHelper:KoinComponent{
 ##### Folder structure generation
 - Open the terminal inside android studio
 - Drag 'androidApp/src/main/java/com/trenser/newsapp' folder to the terminal
+- Execute the below code inside terminal to create a new file named 'ViewModels.kt'
 ```kotlin
 touch "ViewModels.kt"
 ```
 
+####Paste the below code to the created file
+path : androidApp/src/main/java/com/trenser/newsapp/ViewModels.kt
 
 ```kotlin
 class ArticleListViewModel(private val getNewsUsecase: GetNews): ViewModel(){}
@@ -129,16 +143,17 @@ class ContentViewModel(): ViewModel(){}
 
 #### Step 3.2 : Define Koin for Android-module in AppModule file inside path :
 ##### Folder structure generation
-- Open the terminal inside android studio
-- Drag 'androidApp/src/main/java/com/trenser/newsapp' folder to the terminal
+- Create a new file named 'AppModule.kt' inside the same folder used in the previous step(step 3.1.1)
+- Execute the below code inside terminal to create the file
 ```kotlin
 touch "AppModule.kt"
 ```
+
 ####Paste the below code to the created file
 path : androidApp/src/main/java/com/trenser/newsapp/AppModule.kt
 
-- We do this to inject ViewModels to the Android application
-- Since Koin is a Kotlin library, we will use a Koin module to inject View models directly to Android app
+    - We do this to inject ViewModels to the Android application
+    - Since Koin is a Kotlin library, we will use a Koin module to inject View models directly to Android app
 ```kotlin
 val appModule = module {
     // Provide ViewModel
@@ -167,7 +182,7 @@ val appModule = module {
 }
 ```
 
-#### Step 3.3 : Create MyApplication class and Start DI for Android(Path will already be present). 
+#### Step 3.3 : Create MyApplication class and Start DI for Android(File will already be present). 
 path : androidApp/src/main/java/com/trenser/newsapp/android/MainActivity.kt
 ```kotlin
 class MyApplication : Application() {
