@@ -87,13 +87,13 @@ class KoinHelper : KoinComponent {
 #### Step 2.2 : Create a class inside iosMain to use Koin inside iOS app
 ##### Folder structure generation
 - Open the terminal inside android studio (skip this if you already have the terminal opened)
-- Drag 'shared/src/iosMain/kotlin/com/trenser/newsapp/data/local' folder to the terminal
+- Drag 'shared/src/iosMain/kotlin/com/trenser/newsapp/data' folder to the terminal (skip this if you are already at this path)
 - Execute the below code to create a new file named 'ViewModelHelper.kt'
 ```kotlin
 touch "ViewModelHelper.kt"
 ```
 
-path : shared/src/iosMain/kotlin/com/trenser/newsapp/data/local/ViewModelHelper.kt
+path : shared/src/iosMain/kotlin/com/trenser/newsapp/data/ViewModelHelper.kt
 - We will write a class and some variables for injecting dependencies into the iOS app inside the created file
 ```kotlin
 sealed class ViewModelHelper: KoinComponent {
