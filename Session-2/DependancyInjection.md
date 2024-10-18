@@ -64,11 +64,6 @@ touch "KoinHelper.kt"
 
 ##### Paste the below code to the created file
 path : shared/src/iosMain/kotlin/com/trenser/newsapp/data/KoinHelper.kt
-
-- Why do we need this class?
-    - Koin is a Kotlin library so we cannot use it directly inside iOS application
-    - We will call KoinHelper.initKoin() inside the entry point of the swiftUI app
-
 ```kotlin
 class KoinHelper : KoinComponent {
     fun initKoin() {
@@ -83,6 +78,9 @@ class KoinHelper : KoinComponent {
     }
 }
 ```
+- Why do we need this class?
+    - Koin is a Kotlin library so we cannot use it directly inside iOS application
+    - We will call KoinHelper.initKoin() inside the entry point of the swiftUI app
 
 #### Step 2.2 : Create a class inside iosMain to use Koin inside iOS app
 ##### Folder structure generation
