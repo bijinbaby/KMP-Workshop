@@ -55,16 +55,15 @@ actual val platformSpecificSharedModule = module {
 #### Step 2.1 : Create a class inside iosMain to help start Koin for iOS
 
 ##### Folder structure generation
-- Open the terminal inside android studio
+- Open the terminal inside android studio (skip this if you already have the terminal opened)
 - Drag 'shared/src/iosMain/kotlin/com/trenser/newsapp/data' folder to the terminal
-- Execute the below code to create a new file named 'di'
+- Execute the below code to create a new file named 'KoinHelper.kt'
 ```kotlin
-mkdir di
+touch "KoinHelper.kt"
 ```
 
-touch "ViewModels.kt"
-
-path : shared/src/iosMain/kotlin/com/trenser/newsapp/data/local/db/di/KoinHelper.kt
+####Paste the below code to the created file
+path : shared/src/iosMain/kotlin/com/trenser/newsapp/data/KoinHelper.kt
 
 - Why do we need this class?
     - Koin is a Kotlin library so we cannot use it directly inside iOS application
@@ -86,20 +85,28 @@ class KoinHelper : KoinComponent {
 ```
 
 #### Step 2.2 : Create a class inside iosMain to use Koin inside iOS app
-path : shared/src/iosMain/kotlin/com/trenser/newsapp/data/local/db/di/ViemodelHelper.kt
-- We will write a class and some variables for injecting dependencies into iOS app
+##### Folder structure generation
+- Open the terminal inside android studio (skip this if you already have the terminal opened)
+- Drag 'shared/src/iosMain/kotlin/com/trenser/newsapp/data/local' folder to the terminal
+- Execute the below code to create a new file named 'ViewModelHelper.kt'
 ```kotlin
-sealed class ViemodelHelper:KoinComponent{
+touch "ViewModelHelper.kt"
+```
 
-    data object ArticleListViewModelHelper: ViemodelHelper(){
+path : shared/src/iosMain/kotlin/com/trenser/newsapp/data/local/ViewModelHelper.kt
+- We will write a class and some variables for injecting dependencies into the iOS app inside the created file
+```kotlin
+sealed class ViewModelHelper: KoinComponent {
+
+    data object ArticleListViewModelHelper: ViemodelHelper() {
         val getNewsUsecase: GetNews by inject<GetNews>()
     }
 
-    data object BookmarkListViewModelHelper : ViemodelHelper() {
+    data object BookmarkListViewModelHelper : ViewModelHelper() {
         val getBookmarksUsecase: GetBookmarks by inject<GetBookmarks>()
     }
 
-    data object ArticleDetailsViewModelHelper : ViemodelHelper() {
+    data object ArticleDetailsViewModelHelper : ViewModelHelper() {
         val addToBookmarksUsecase: AddToBookmarks by inject<AddToBookmarks>()
         val deleteFromBookmarksUsecase: DeleteFromBookmarks by inject<DeleteFromBookmarks>()
         val isBookmarkedUsecase: IsBookmarked by inject<IsBookmarked>()
@@ -116,7 +123,7 @@ sealed class ViemodelHelper:KoinComponent{
 ##### Step 3.1.1 : Create a class to hold all the viewModels for Android
 
 ##### Folder structure generation
-- Open the terminal inside android studio
+- Open the terminal inside android studio (skip this if you already have the terminal opened)
 - Drag 'androidApp/src/main/java/com/trenser/newsapp' folder to the terminal
 - Execute the below code inside terminal to create a new file named 'ViewModels.kt'
 ```kotlin
@@ -152,8 +159,8 @@ touch "AppModule.kt"
 ####Paste the below code to the created file
 path : androidApp/src/main/java/com/trenser/newsapp/AppModule.kt
 
-    - We do this to inject ViewModels to the Android application
-    - Since Koin is a Kotlin library, we will use a Koin module to inject View models directly to Android app
+- We do this to inject ViewModels to the Android application
+- Since Koin is a Kotlin library, we will use a Koin module to inject View models directly to Android app
 ```kotlin
 val appModule = module {
     // Provide ViewModel
