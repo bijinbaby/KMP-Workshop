@@ -40,8 +40,8 @@ actual val platformSpecificSharedModule = module {
 }
 ```
 
-#### Step 1.4 : Override the plaform-specific-module variable inside iOS module. path :
-shared/src/iosMain/kotlin/com/trenser/newsapp/Platform.ios.kt
+#### Step 1.4 : Override the plaform-specific-module variable inside iOS module
+path : shared/src/iosMain/kotlin/com/trenser/newsapp/Platform.ios.kt
 ```kotlin
 actual val platformSpecificSharedModule = module {
     single<BookmarkRepository> { BookmarkRepositoryImpl(
