@@ -146,7 +146,7 @@ class SplashViewModel(): ViewModel(){}
 class ContentViewModel(): ViewModel(){}
 ```
 
-#### Step 3.2 : Define Koin for Android-module in AppModule file inside path :
+#### Step 3.2 : Define Koin for Android-module
 ##### Folder structure generation
 - Create a new file named 'AppModule.kt' inside the same folder used in the previous step(step 3.1.1)
 - Execute the below code inside terminal to create the file
