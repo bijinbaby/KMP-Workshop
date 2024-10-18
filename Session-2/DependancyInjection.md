@@ -4,6 +4,7 @@
 ### Step 1 : Define Koin modules
 #### Step 1.1 : Define Koin for shared-module inside path :
 shared/src/commonMain/kotlin/com/trenser/newsapp/Platform.kt
+Add the below code to the path
 ```kotlin
 val sharedModule = module {
     // Provide Repository
@@ -20,6 +21,7 @@ val sharedModule = module {
 
 #### Step 1.2 : Define Koin module variable for platform-specific-modules inside path : 
 shared/src/commonMain/kotlin/com/trenser/newsapp/Platform.kt
+Add the below code to the path
 ```kotlin
 expect val platformSpecificSharedModule: Module
 ```
