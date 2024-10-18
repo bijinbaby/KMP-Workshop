@@ -62,7 +62,7 @@ actual val platformSpecificSharedModule = module {
 touch "KoinHelper.kt"
 ```
 
-####Paste the below code to the created file
+#### Paste the below code to the created file
 path : shared/src/iosMain/kotlin/com/trenser/newsapp/data/KoinHelper.kt
 
 - Why do we need this class?
