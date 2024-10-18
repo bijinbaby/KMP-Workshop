@@ -156,9 +156,6 @@ touch "AppModule.kt"
 
 ##### Paste the below code to the created file
 path : androidApp/src/main/java/com/trenser/newsapp/AppModule.kt
-
-- We do this to inject ViewModels to the Android application
-- Since Koin is a Kotlin library, we will use a Koin module to inject View models directly to Android app
 ```kotlin
 val appModule = module {
     // Provide ViewModel
@@ -186,6 +183,8 @@ val appModule = module {
     }
 }
 ```
+- We do this to inject ViewModels to the Android application
+- Since Koin is a Kotlin library, we will use a Koin module to inject View models directly to Android app
 
 #### Step 3.3 : Create MyApplication class and Start DI for Android(File will already be present). 
 path : androidApp/src/main/java/com/trenser/newsapp/android/MainActivity.kt
