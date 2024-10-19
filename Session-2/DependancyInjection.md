@@ -58,8 +58,14 @@ actual val platformSpecificSharedModule = module {
 - Open the terminal inside android studio (skip this if you already have the terminal opened)
 - Drag 'shared/src/iosMain/kotlin/com/trenser/newsapp/data' folder to the terminal
 - Execute the below code to create a new file named 'KoinHelper.kt'
+  
+For Mac machines :
 ```kotlin
 touch "KoinHelper.kt"
+```
+For Windows Machines :
+```kotlin
+ni "KoinHelper.kt"
 ```
 
 ##### Paste the below code to the created file
@@ -87,8 +93,14 @@ class KoinHelper : KoinComponent {
 - Open the terminal inside android studio (skip this if you already have the terminal opened)
 - Drag 'shared/src/iosMain/kotlin/com/trenser/newsapp/data' folder to the terminal (skip this if you are already at this path)
 - Execute the below code to create a new file named 'ViewModelHelper.kt'
+
+For Mac machines :
 ```kotlin
 touch "ViewModelHelper.kt"
+```
+For Windows machines :
+```kotlin
+ni "ViewModelHelper.kt"
 ```
 
 path : shared/src/iosMain/kotlin/com/trenser/newsapp/data/ViewModelHelper.kt
@@ -150,8 +162,14 @@ class ContentViewModel(): ViewModel(){}
 ##### Folder structure generation
 - Create a new file named 'AppModule.kt' inside the same folder used in the previous step(step 3.1.1)
 - Execute the below code inside terminal to create the file
+
+For Mac machines :
 ```kotlin
 touch "AppModule.kt"
+```
+For Windows machines :
+```kotlin
+ni "AppModule.kt"
 ```
 
 ##### Paste the below code to the created file
