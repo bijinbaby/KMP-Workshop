@@ -3,7 +3,7 @@
 
 ### Step 1 : Define Koin modules
 #### Step 1.1 : Define Koin for shared-module 
-path : shared/src/commonMain/kotlin/com/trenser/newsapp/Platform.kt
+path : [project root]/shared/src/commonMain/kotlin/com/trenser/newsapp/Platform.kt
 
 - Add the below code to the file at above path
 ```kotlin
@@ -21,7 +21,7 @@ val sharedModule = module {
 ```
 
 #### Step 1.2 : Define Koin module variable for platform-specific-modules
-path : shared/src/commonMain/kotlin/com/trenser/newsapp/Platform.kt
+path : [project root]/shared/src/commonMain/kotlin/com/trenser/newsapp/Platform.kt
 
 - Add the below code to the file at above path
 ```kotlin
@@ -29,7 +29,7 @@ expect val platformSpecificSharedModule: Module
 ```
 
 #### Step 1.3 : Override the plaform-specific-module variable inside Android module
-path : shared/src/androidMain/kotlin/com/trenser/newsapp/Platform.android.kt
+path : [project root]/shared/src/androidMain/kotlin/com/trenser/newsapp/Platform.android.kt
 
 - Add the below code to the file at above path
 ```kotlin
@@ -41,7 +41,7 @@ actual val platformSpecificSharedModule = module {
 ```
 
 #### Step 1.4 : Override the plaform-specific-module variable inside iOS module
-path : shared/src/iosMain/kotlin/com/trenser/newsapp/Platform.ios.kt
+path : [project root]/shared/src/iosMain/kotlin/com/trenser/newsapp/Platform.ios.kt
 ```kotlin
 actual val platformSpecificSharedModule = module {
     single<BookmarkRepository> { BookmarkRepositoryImpl(
@@ -55,8 +55,7 @@ actual val platformSpecificSharedModule = module {
 #### Step 2.1 : Create a class inside iosMain to help start Koin for iOS
 
 ##### Folder structure generation
-- Open the terminal inside android studio (skip this if you already have the terminal opened)
-- Drag 'shared/src/iosMain/kotlin/com/trenser/newsapp/data' folder to the terminal
+- Right click 'shared/src/iosMain/kotlin/com/trenser/newsapp/data' folder and open in terminal
 - Execute the below code to create a new file named 'KoinHelper.kt'
   
 For Mac machines :
@@ -69,7 +68,7 @@ ni "KoinHelper.kt"
 ```
 
 ##### Paste the below code to the created file
-path : shared/src/iosMain/kotlin/com/trenser/newsapp/data/KoinHelper.kt
+path : [project root]/shared/src/iosMain/kotlin/com/trenser/newsapp/data/KoinHelper.kt
 ```kotlin
 class KoinHelper : KoinComponent {
     fun initKoin() {
@@ -90,8 +89,7 @@ class KoinHelper : KoinComponent {
 
 #### Step 2.2 : Create a class inside iosMain to use Koin inside iOS app
 ##### Folder structure generation
-- Open the terminal inside android studio (skip this if you already have the terminal opened)
-- Drag 'shared/src/iosMain/kotlin/com/trenser/newsapp/data' folder to the terminal (skip this if you are already at this path)
+- Right click '[project root]/shared/src/iosMain/kotlin/com/trenser/newsapp/data' folder and open in terminal (skip this if you are already at this path)
 - Execute the below code to create a new file named 'ViewModelHelper.kt'
 
 For Mac machines :
@@ -103,7 +101,7 @@ For Windows machines :
 ni "ViewModelHelper.kt"
 ```
 
-path : shared/src/iosMain/kotlin/com/trenser/newsapp/data/ViewModelHelper.kt
+path : [project root]/shared/src/iosMain/kotlin/com/trenser/newsapp/data/ViewModelHelper.kt
 - We will write a class and some variables for injecting dependencies into the iOS app inside the created file
 ```kotlin
 sealed class ViewModelHelper: KoinComponent {
@@ -133,15 +131,14 @@ sealed class ViewModelHelper: KoinComponent {
 ##### Step 3.1.1 : Create a class to hold all the viewModels for Android
 
 ##### Folder structure generation
-- Open the terminal inside android studio (skip this if you already have the terminal opened)
-- Drag 'androidApp/src/main/java/com/trenser/newsapp' folder to the terminal
+- Right click '[project root]/androidApp/src/main/java/com/trenser/newsapp' folder and open in terminal
 - Execute the below code inside terminal to create a new file named 'ViewModels.kt'
 ```kotlin
 touch "ViewModels.kt"
 ```
 
 ##### Paste the below code to the created file
-path : androidApp/src/main/java/com/trenser/newsapp/ViewModels.kt
+path : [project root]/androidApp/src/main/java/com/trenser/newsapp/ViewModels.kt
 
 ```kotlin
 class ArticleListViewModel(private val getNewsUsecase: GetNews): ViewModel(){}
@@ -173,7 +170,7 @@ ni "AppModule.kt"
 ```
 
 ##### Paste the below code to the created file
-path : androidApp/src/main/java/com/trenser/newsapp/AppModule.kt
+path : [project root]/androidApp/src/main/java/com/trenser/newsapp/AppModule.kt
 ```kotlin
 val appModule = module {
     // Provide ViewModel
@@ -205,7 +202,7 @@ val appModule = module {
 - Since Koin is a Kotlin library, we will use a Koin module to inject View models directly to Android app
 
 #### Step 3.3 : Create MyApplication class and Start DI for Android(File will already be present). 
-path : androidApp/src/main/java/com/trenser/newsapp/android/MainActivity.kt
+path : [project root]/androidApp/src/main/java/com/trenser/newsapp/android/MainActivity.kt
 ```kotlin
 class MyApplication : Application() {
     override fun onCreate() {
